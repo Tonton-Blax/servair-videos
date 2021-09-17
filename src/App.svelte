@@ -31,7 +31,7 @@
 	let currentSource = videos[0].src
 
 	let changeSource = (v) => {
-		console.log("hop")
+		currentSource=v.src;
 		player.source = {
 		type: 'video',
 		title: v.title,
@@ -62,7 +62,7 @@
 		
 	</section>
 	<!-- svelte-ignore a11y-media-has-caption -->
-	<video id="player" playsinline controls data-poster="/videos/{currentSource}.jpg">
+	<video id="player" playsinline controls preload data-poster="/videos/{currentSource}.jpg">
 		<source src="/videos/{currentSource}.mp4" type="video/mp4" />
 	</video>
 
@@ -75,7 +75,8 @@
 					<img src="/videos/{v.src}.jpg" alt="{v.title}">
 					<div class="under">{v.title}</div>
 					<div class="image-details">
-						<p style="margin-top:-6px;">
+						<p style="margin-top:-12px;">
+							▶️<br>
 							{@html v.names}<br>
 							<span style="font-weight:100">{v.dpt}</span>
 						</p>
