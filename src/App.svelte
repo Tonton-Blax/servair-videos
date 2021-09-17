@@ -66,7 +66,7 @@
 		<source src="/videos/{currentSource}.mp4" type="video/mp4" />
 	</video>
 
-	<section class="grid_wrapper">
+	<section class="grid_wrapper" style="margin-bottom:50px;">
 		{#each videos as v}
 		  <div class="column" on:click={()=>changeSource(v)}>
 			<div class="image-wrapper">
