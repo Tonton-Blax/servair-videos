@@ -20,6 +20,7 @@
   "dependencies": {
     "global": "^4.4.0",
     "netlify-cli": "^6.9.6",
+    "plyr": "^3.6.8",
     "sirv-cli": "^1.0.14"
   }
 }
