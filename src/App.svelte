@@ -5,7 +5,18 @@
 	let player;
 
 	onMount(async()=>{
-		player = new Plyr('#player');
+		player = new Plyr('#player',);
+		player.source = {
+			type: 'video',
+			title: videos[0].title,
+			sources: [
+				{
+					src: `/videos/${videos[0].src}.mp4`,
+					type: 'video/mp4'
+				} 
+			],
+			poster: `/videos/${videos[0].src}.jpg`
+		};
 	})
 
 
@@ -28,22 +39,20 @@
 		{ title: "Passage de l'activité été 2021", src: "SOFIANE-DAHAK", names: "Sofiane DAHAK", dpt: "Opérations SEA"},
 		{ title: "Cocooning et nouveau contrat TCR", src: "YANN-COLLET", names: "Yann COLLET", dpt: "Servlogistic"},
 	]
-	let currentSource = videos[0].src
 
 	let changeSource = (v) => {
-		currentSource=v.src;
+		player.stop()
 		player.source = {
-		type: 'video',
-		title: v.title,
-		sources: [
-			{
-				src: `/videos/${v.src}.mp4`,
-				type: 'video/mp4'
-				//size: 720,
-			} 
-		],
-		poster: `/videos/${v.src}.jpg`
-	};
+			type: 'video',
+			title: v.title,
+			sources: [
+				{
+					src: `/videos/${v.src}.mp4`,
+					type: 'video/mp4'
+				} 
+			],
+			poster: `/videos/${v.src}.jpg`
+		};
 	window.scroll(0,0);
 	player.play();
 }
@@ -62,9 +71,7 @@
 		
 	</section>
 	<!-- svelte-ignore a11y-media-has-caption -->
-	<video id="player" playsinline controls preload data-poster="/videos/{currentSource}.jpg">
-		<source src="/videos/{currentSource}.mp4" type="video/mp4" />
-	</video>
+	<video id="player" />
 
 	<section class="grid_wrapper" style="margin-bottom:50px;">
 		{#each videos as v}
